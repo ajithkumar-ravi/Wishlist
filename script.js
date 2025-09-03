@@ -1,6 +1,6 @@
 let todoInput = document.querySelector(".input");
 let addTodoButton = document.querySelector(".button");
-let showTodos = document.querySelector("todos-container")
+let showTodos = document.querySelector(".todos-container")
 let todo;
 let todoList = [];
 
@@ -20,4 +20,13 @@ addTodoButton.addEventListener("click", (e) => {
     if (todo.length > 0){
         todoList.push({id: uuid(), todo, isCompleted : false})
     }
+    renderTodoList(todoList)
+    
 })
+
+function renderTodoList(todoList){
+    console.log(todoList);
+    showTodos.innerHTML = todoList.map(todo =>   `<div> <input type="checkbox"> <label class="todo">${todo.todo}</label> <button> Delete </button> </div>`);
+}
+
+renderTodoList(todoList)
