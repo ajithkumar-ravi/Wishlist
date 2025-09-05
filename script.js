@@ -26,13 +26,15 @@ addTodoButton.addEventListener("click", (e) => {
 
 showTodos.addEventListener("click", (e) => {
     let key = e.target.dataset.key;
-    console.log(key);
-    console.log(e.target);
+    todoList = todoList.map(todo => todo.id === key ? {...todo, isCompleted: !todo.isCompleted} : todo);
+    renderTodoList(todoList);
+    console.log(todoList);
+    
 })
 
 function renderTodoList(todoList){
     console.log(todoList);
-    showTodos.innerHTML = todoList.map(({id, todo, isCompleted}) =>   `<div> <input id="item-${id} type="checkbox" data-key=${id}> <label for="item-${id} class="todo" data-key=${id}>${todo}</label> <button> Delete </button> </div>`);
+    showTodos.innerHTML = todoList.map(({id, todo, isCompleted}) =>   `<div> <input type="checkbox" id="item-${id}"  data-key=${id}> <label for="item-${id}" class="todo todo-text t-pointer ${isCompleted ? "checked-todo" : ""}"  data-key=${id}>${todo}</label> <button> Delete </button> </div>`);
 }
 
 renderTodoList(todoList)
