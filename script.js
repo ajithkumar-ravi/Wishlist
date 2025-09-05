@@ -2,7 +2,10 @@ let todoInput = document.querySelector(".input");
 let addTodoButton = document.querySelector(".button");
 let showTodos = document.querySelector(".todos-container")
 let todo;
-let todoList = [];
+
+let localData = JSON.parse(localStorage.getItem("todo"))
+let todoList = localData || [];
+
 
 // Create a function for get a unique id
 function uuid() {
@@ -21,6 +24,7 @@ addTodoButton.addEventListener("click", (e) => {
         todoList.push({id: uuid(), todo, isCompleted : false})
     }
     renderTodoList(todoList)
+    localStorage.setItem("todo", JSON.stringify(todoList));
     todoInput.value = "";
 })
 
@@ -30,6 +34,7 @@ showTodos.addEventListener("click", (e) => {
     todoList = todoList.map(todo => todo.id === key ? {...todo, isCompleted: !todo.isCompleted} : todo);
     todoList = todoList.filter(todo => todo.id !== delTodokey)
     renderTodoList(todoList);
+    localStorage.setItem("todo", JSON.stringify(todoList))
     console.log(todoList);
     
 })
