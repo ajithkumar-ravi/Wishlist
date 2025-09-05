@@ -51,7 +51,6 @@ body {
   font-size: 1.5rem;
 }
 
-
 .todos-container {
   height: 70vh;
   overflow-y: auto;
@@ -76,4 +75,11 @@ body {
 
 .del-btn {
     color: #f9fafb;
+    background-color: rgb(208, 43, 43);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 3.5px;
+
 }
